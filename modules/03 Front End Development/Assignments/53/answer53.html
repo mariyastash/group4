@@ -11,19 +11,54 @@
         header {
             width: 100%;
             margin: auto;
+            font-size: 3em;
             text-align: center;
+            margin-bottom: 10px;
         }
 
         #back-to-top {
             position: fixed;
-            bottom: 0px;
+            bottom: 10px;
+        }
+
+        #main-table {
+
+            width: 700px;
+            text-align: center;
+        }
+
+        #side-menu {
+            width: 170px;
+            margin: 5px;
+            position: fixed;
+            top: 150px;
+            border: 2px solid #E84726;
+        }
+
+        select {
+            margin: 5px;
+        }
+
+        #submit-btn {
+            margin: 5px;
+        }
+
+        #main-table {
+            position: relative;
+            margin: auto;
+            border: 3px inset #E84726;
+            background: #FFC99D;
+        }
+
+        tr{
+            border: 3px inset #E84726;
         }
     </style>
 
 </head>
 
 <body>
-    <header id="head">"Our Research"</header>
+    <header id="head">Our Research</header>
 
     <table id="main-table">
         <tr>
@@ -33,7 +68,70 @@
 
     </table>
 
+    <div id="side-menu">
+        <form>
+            Student Name:
+            <select id="students-list">
+                <option selected="true" disabled="disabled">--Select student--</option>
+                <option value="mariya">Mariya</option>
+                <option value="gabi">Gabi</option>
+                <option value="amitay">Amitay</option>
+                <option value="david l.">David L.</option>
+                <option value="shimon">Shimon</option>
+                <option value="ameer">Ameer</option>
+                <option value="evyatar">Evyatar</option>
+                <option value="matan">Matan</option>
+                <option value="moshiko">Moshiko</option>
+                <option value="elinor">Elinor</option>
+                <option value="ofek">Ofek</option>
+                <option value="stevenson">Stevenson</option>
+                <option value="avi">Avi</option>
+                <option value="lital">Lital</option>
+                <option value="malak">Malak</option>
+                <option value="yakir">Yakir</option>
+                <option value="daniel">Daniel</option>
+                <option value="david s.">David S.</option>
+                <option value="guy">Guy</option>
+             </select> Subject:
+
+            <select id="subjects-list">
+                <option selected="true" disabled="disabled">--Select subject--</option>
+                <option value="s1">s1</option>
+                <option value="s2">s2</option>
+                <option value="s3">s3</option>
+                <option value="s4">s4</option>
+            </select>
+
+            <button id="submit-btn" type="button" onclick="getSelected()">Submit</button>
+        </form>
+
+    </div>
+
     <a id="back-to-top" href="#head">Back to top</a>
+
+    <script>
+        function getSelected() {
+            var selectedStudent = document.getElementById("students-list").value;
+            var selectedSubject = document.getElementById("subjects-list").value;
+            addSelectedValues(selectedStudent, selectedSubject);
+        }
+
+        function addSelectedValues(student, subject) {
+            var tr = document.createElement("tr");
+            var tdStudent = document.createElement("td");
+            var tdSubject = document.createElement("td");
+
+            tdStudent.innerText = student;
+            tdSubject.innerText = subject;
+
+            tr.appendChild(tdStudent);
+            tr.appendChild(tdSubject);
+
+            var table = document.getElementById("main-table");
+
+            table.appendChild(tr);
+        }
+    </script>
 </body>
 
 </html>
