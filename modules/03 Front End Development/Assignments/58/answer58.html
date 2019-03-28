@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/QIAQ9Rd/blue-background-video-animation_nkscggin__F0000.png);
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #list {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #content {
+            display: grid;
+            grid-template-columns: 80% 20%;
+            grid-column-gap: 10px;
+            height: 50vh;
+        }
+
+        #header {
+            text-align: center;
+            color: white;
+            font-size: 40px;
+            margin: 50px;
+            max-width: 100%;
+
+        }
+
+        #menu {
+            grid-column: 2;
+            grid-row: 1;
+            width: max-content;
+            background-color: rgba(0, 17, 255, 0.281);
+            overflow: auto;
+            border-radius: 10px;
+        }
+
+        .menu-item {
+            border: 2px solid black;
+            padding: 22px;
+            margin: 5px 15px;
+            background: rgba(0, 0, 0, 0.418);
+        }
+
+        #video-details {
+            grid-column: 1;
+            grid-row: 1;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            background: rgba(17, 0, 94, 0.116);
+        }
+
+        #main-container {
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        video {
+            max-width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main-container">
+        <header id="header">DoGTube</header>
+        <div id="content">
+            <div id="video-details">
+                <video id="video-src" controls></video>
+                <div id="video-description">
+                    <h2 id="player-title">Video Title</h2>
+                    <h3 id="player-artist">Artist Name</h3>
+                    <h4 id="player-description">Description</h4>
+                </div>
+            </div>
+            <div id="menu">
+                <div id="list">List</div>
+            </div>
+        </div>
+    </div>
+    <script>
+
+        function Video(src) {
+            this.src = src;
+
+            // var link = document.createElement("a");
+            // link.setAttribute("href", "#");
+            // link.addEventListener("click", function () {
+            //     document.getElementById("video").setAttribute("src", src);
+            // });
+        }
+
+        var video1 = new Video("https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4");
+
+
+        var videosArr = [];
+        var menu = document.getElementById("menu");
+
+
+        function init() {
+            for (var i = 0; i < 10; i++) {
+                loadVideo();
+            }
+        }
+        function loadVideo() {
+            fetch("https://random.dog/woof.json")
+                .then(response => response.json())
+                .then(data => {
+                    if (data.url.indexOf(".mp4") > -1) {
+                        videosArr.push(new Video(data.url));
+                        var menuItem = document.createElement("div");
+                        menuItem.setAttribute("class", "menu-item");
+                        menuItem.innerHTML = "<img src='https://image.flaticon.com/icons/png/512/26/26025.png' width=30px heigth=30px>";
+                        menuItem.addEventListener('click', function () {
+                            document.getElementById("video-src").src = data.url;
+                            document.getElementById("video-src").setAttribute('autoplay', '');
+                        });
+                        menu.appendChild(menuItem);
+                    }
+                    else {
+                        loadVideo();
+                    }
+                });
+        }
+
+        init();
+
+    </script>
+</body>
+
+</html>
