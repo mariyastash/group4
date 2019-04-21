@@ -1,0 +1,15 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>מחשבון BMI</h1>
+  <form id=container (submit)="calcBmiFunc($event, height.value, weight.value)">
+    <input type="text" placeholder="גובה" required #height>
+    <input type="number" placeholder="משקל" required #weight>
+    <button type="submit" id="calcBtn">חשב</button>
+  </form>
+
+  <div id="result" [style.visibility]="isDivVisible ? 'visible' : 'hidden'">התוצאה היא {{ result | number: '.1' }}</div>
+</div>
+
+
+
+<router-outlet></router-outlet>

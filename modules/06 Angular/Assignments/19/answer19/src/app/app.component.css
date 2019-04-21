@@ -1,0 +1,44 @@
+input{
+    display: block;
+    margin: 20px;
+    background-color: orange;
+    border: .5px solid black;
+    text-align: center;
+    height: 40px;
+    width: 180px;
+    align-self: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 200px;
+    border: 2px solid rgba(0, 128, 0, 0.753);
+    border-radius: 20px;
+    background-color: rgba(75, 230, 75, 0.384);
+    padding: 30px;
+    margin: auto;
+}
+
+button{
+    margin-top: 20px;
+    height: 40px;
+    width: 80px;
+    align-self: center;
+    background-color: green;
+    border: none;
+    color: white;
+}
+
+#result{
+    margin-top: 20px;
+    visibility: hidden;
+}
+
+/* #container{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+} */
