@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,9 +17,13 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+//import {FormGroup, FormBuilder, FormControl, Validators} from '@angular/forms';
+

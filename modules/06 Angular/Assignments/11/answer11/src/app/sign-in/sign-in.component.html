@@ -1,7 +1,12 @@
-<form>
-  Username: <input type="text" placeholder="Username"><br><br>
-  Password: <input type="password" placeholder="Password"><br><br>
-  <input type="submit"><br><br>
-  <a routerLink="sign-up">Sign Up</a>
-  <a routerLink="forgot-password">Forgot Your Password?</a>
+<form [formGroup]="signinForm" (submit)="onSubmit()">
+  <div formGroup="signinInfo">
+    <label for="username">Username:</label>
+    <input type="text" formControlName="username" placeholder="Username">
+    <label for="password">Password:</label>
+    <input type="password" formControlName="password" placeholder="Password">
+  </div>
+  <button type="submit">Submit</button>
 </form>
+
+<a routerLink="sign-up">Sign Up</a>
+<a routerLink="forgot-password">Forgot Your Password?</a>
