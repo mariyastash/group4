@@ -1,0 +1,28 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="searchBookDiv">
+
+  <form id="searchBook" (ngSubmit)="searchBook(query)">
+    <div class="form-group">
+      <label for="name">Book:</label>
+      <input type="text" placeholder="Enter book name..." minlength="3" #query />
+    </div>
+    <button class="btn">Search</button>
+  </form>
+</div>
+
+<div id="books-list">
+  <div id="book" *ngFor="let book of booksArray">Book Titel: {{book.title}}
+    <div>
+      Authors:
+      <div id="authors-list" *ngFor="let author of bookAuthors">{{author}}</div>
+    </div>
+    <a href="{{book.preview}}">Book Preview</a>
+  </div>
+</div>
+
+<button type="button" (click)="searchBook(query)">Load More</button>
+
+
+
+
+<router-outlet></router-outlet>

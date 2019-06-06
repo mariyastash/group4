@@ -1,0 +1,11 @@
+#book{
+    border: solid 2px rgb(255, 0, 255);
+}
+
+.searchBookDiv{
+    position: sticky;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    background: white;
+}
